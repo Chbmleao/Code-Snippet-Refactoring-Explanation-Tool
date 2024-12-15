@@ -7,7 +7,6 @@ html {
   font-family: 'Messina mono', sans-serif;
   background-color: var(--color-white);
   color: var(--color-black);
-  /* height: 100%; */
   margin: 0;
   padding: 0;
 }

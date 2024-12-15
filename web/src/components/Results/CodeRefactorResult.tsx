@@ -1,4 +1,5 @@
 import React from 'react';
+import TitleBox from '../Layouts/TitleBox';
 import CodeArea from '../UI/CodeArea';
 
 interface CodeRefactorResultProps {
@@ -13,18 +14,24 @@ const CodeRefactorResult: React.FC<CodeRefactorResultProps> = ({
   reasoning,
 }) => {
   return (
-    <div className="w-full p-3 border-gray-300 rounded-md resize-none">
+    <div className="w-full py-24 border-gray-300 rounded-md resize-none">
       <div className="mb-4 text-left">
-        <h2>Explanation</h2>
+        <TitleBox
+          title="Code explanation"
+          description="A natural-language explanation of what the code does."
+        />
         <p>{explanation}</p>
       </div>
 
-      <div className="h-auto max-h-96">
-        <CodeArea initalCode={code} readOnly={true} onChange={() => {}} />
+      <div className="h-auto max-h-96 my-10">
+        <CodeArea initialCode={code} readOnly={true} onChange={() => {}} />
       </div>
 
       <div className="mt-4 text-left">
-        <h2>Reasoning</h2>
+        <TitleBox
+          title="Step-by-step reasoning"
+          description="A step-by-step reasoning of how the explanation was derived."
+        />
         <ul>
           {reasoning.map((reason, index) => (
             <li key={index}>

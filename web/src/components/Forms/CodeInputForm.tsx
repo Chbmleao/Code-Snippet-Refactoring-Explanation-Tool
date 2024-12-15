@@ -21,7 +21,12 @@ const CodeInputForm: React.FC<CodeInputFormProps> = ({ onSubmit }) => {
       className="w-full p-3 border-gray-300 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
       onSubmit={handleSubmit}
     >
-      <CodeArea initalCode="" readOnly={false} onChange={setCode} />
+      <CodeArea
+        initialCode=""
+        readOnly={false}
+        darkMode={true}
+        onChange={setCode}
+      />
       <Button text="Submit" />
     </form>
   );

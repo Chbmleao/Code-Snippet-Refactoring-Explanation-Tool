@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import Header from './components/Layouts/Header';
 import CodeInputForm from './components/Forms/CodeInputForm';
 import CodeRefactorResult from './components/Results/CodeRefactorResult';
 import { callCodeRefactorAPI } from './services/apiService';
@@ -30,11 +31,14 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-center">
+      <Header />
+
+      <div className="px-36 bg-gray-950 min-h-screen flex items-center justify-center">
         <CodeInputForm onSubmit={handleCodeSubmit} />
       </div>
+
       {refactoredData.code && (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="px-36 bg-white min-h-screen flex items-center justify-center">
           <CodeRefactorResult
             code={refactoredData.code}
             explanation={refactoredData.explanation}

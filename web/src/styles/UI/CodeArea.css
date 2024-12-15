@@ -1,0 +1,19 @@
+@import 'prismjs/themes/prism-tomorrow.css';
+
+.dark {
+  background-color: #030712;
+  color: white;
+  border-color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+
+.dark:focus,
+.light:focus {
+  border-color: gray;
+  outline: none;
+}

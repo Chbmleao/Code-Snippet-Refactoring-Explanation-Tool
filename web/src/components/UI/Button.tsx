@@ -1,3 +1,4 @@
+import '../../styles/UI/Button.css';
 import React from 'react';
 
 interface ButtonProps {
@@ -7,8 +8,9 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ text }) => {
   return (
     <button
+      id="dotted-btn"
       type="submit"
-      className="mt-4 px-6 py-2 bg-blue-500 text-white font-bold rounded-md shadow hover:bg-blue-600 transition"
+      className="mt-4 px-6 py-3 bg-gray-950 text-white font-bold transition ease-in-out duration-500 uppercase tracking-widest hover:bg-white hover:text-gray-950 text-sm"
     >
       {text}
     </button>

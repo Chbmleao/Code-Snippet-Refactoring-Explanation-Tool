@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import '../../styles/UI/CodeArea.css';
+import React, { useEffect, useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 interface CodeAreaProps {
-  initalCode: string;
+  initialCode: string;
   readOnly: boolean;
   onChange: (code: string) => void;
+  darkMode?: boolean;
 }
 
 const CodeArea: React.FC<CodeAreaProps> = ({
-  initalCode = '',
+  initialCode = '',
   readOnly = false,
+  darkMode = false,
   onChange,
 }) => {
-  const [code, setCode] = useState<string>(initalCode);
+  const [code, setCode] = useState<string>(initialCode);
+
+  useEffect(() => {
+    setCode(initialCode);
+  }, [initialCode]);
 
   const handleCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newCode = event.target.value;
@@ -23,7 +30,7 @@ const CodeArea: React.FC<CodeAreaProps> = ({
 
   return (
     <TextareaAutosize
-      className="w-full p-3 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 h-full overflow-auto max-h-96"
+      className={`w-full p-3 border rounded-md resize-none h-full overflow-auto max-h-96 ${darkMode ? 'dark' : 'light'}`}
       placeholder="Enter your code snippet here..."
       value={code}
       onChange={handleCodeChange}
