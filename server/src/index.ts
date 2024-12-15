@@ -10,6 +10,14 @@ dotenv.config({ path: envFile });
 const app = express();
 app.use(bodyParser.json());
 
+// Centralized Error Handling Middleware
+app.use((err: any, req: Request, res: Response, next: Function) => {
+  console.error(err.stack);
+  res
+    .status(500)
+    .json({ message: "An unexpected error occurred.", error: err });
+});
+
 const corsOptions = {
   origin: process.env.WEB_URL,
   methods: ["GET", "POST"],

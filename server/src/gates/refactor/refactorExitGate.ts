@@ -1,26 +1,22 @@
 import { refactorAiServiceAdapter } from "../../adapters/refactor/refactorAIServiceAdapter";
 
 export const refactorExitGate = async (code: string) => {
-  const response = await refactorAiServiceAdapter(code);
-
-  if (!response) {
-    throw new Error("Failed to refactor code.");
-  }
-
   try {
-    const responseObj = JSON.parse(response);
+    const response = await refactorAiServiceAdapter(code);
 
-    if (
-      !responseObj.explanation ||
-      !responseObj.code ||
-      !responseObj.reasoning
-    ) {
-      throw new Error("Invalid response format.");
+    let content = response.choices[0]?.message?.content;
+
+    if (!content) {
+      throw new Error("No content received from AI service.");
     }
 
-    return responseObj;
+    content = content.replace(/(^\`\`\`json\s*)|(\s*\`\`\`$)/g, "").trim();
+
+    const json = JSON.parse(content);
+
+    return json;
   } catch (error) {
-    console.error("Error parsing response:", error);
-    throw new Error("Failed to parse response.");
+    console.error("Failed to parse AI response:", error);
+    throw "Failed to get a valid response from the AI service.";
   }
 };
