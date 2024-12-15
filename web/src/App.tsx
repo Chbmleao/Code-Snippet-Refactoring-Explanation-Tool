@@ -1,9 +1,12 @@
 import './App.css';
 import CodeInputForm from './components/Forms/CodeInputForm';
+import { callCodeRefactorAPI } from './services/apiService';
 
 function App() {
   const handleCodeSubmit = (code: string) => {
-    console.log('Code Submitted:', code);
+    callCodeRefactorAPI(code).then((response: any) => {
+      console.log(response);
+    });
   };
 
   return (
