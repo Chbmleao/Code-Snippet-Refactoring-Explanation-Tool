@@ -16,6 +16,10 @@ const Header: React.FC = () => {
     setLastScrollY(currentScrollY);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
@@ -30,7 +34,7 @@ const Header: React.FC = () => {
         isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className="w-20">
+      <div className="w-20 cursor-pointer" onClick={scrollToTop}>
         <svg fill="none" viewBox="0 0 69 15" width="100%">
           <path
             fill="currentColor"

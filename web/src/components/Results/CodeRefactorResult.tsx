@@ -35,7 +35,7 @@ const CodeRefactorResult: React.FC<CodeRefactorResultProps> = ({
         <ul>
           {reasoning.map((reason, index) => (
             <li key={index}>
-              {index + 1}. {reason}
+              <strong>{index + 1}.</strong> {reason}
             </li>
           ))}
         </ul>
