@@ -11,20 +11,33 @@ const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
 export const refactorAiServiceAdapter = async (code: string) => {
   try {
-    const prompt = `Analyze and refactor the following code:\n\n${code}\n\n1. Explain what it does.\n2. Provide a refactored version.\n3. Detail step-by-step reasoning.`;
+    const prompt = `Analyze and refactor the following code snippet. Your response should follow this JSON format:
+                      {
+                        "explanation": "A clear natural-language explanation of what the code does.",
+                        "code": "A refactored version of the code.",
+                        "reasoning": [
+                          "Step-by-step reasoning to justify the changes and refactor."
+                        ]
+                      }
+
+                    Here's the code snippet:
+
+                      \`\`\`
+                      ${code}
+                      \`\`\`
+    `;
 
     const completion = await openai.chat.completions.create({
       model: model,
       messages: [
-        { role: "system", content: "You are a helpful assistant." },
         {
-          role: "user",
+          role: "system",
           content: prompt,
         },
       ],
     });
 
-    return completion;
+    return completion.choices[0].message.content;
   } catch (error) {
     console.error("Error with OpenAI API:", error);
     throw new Error("Failed to connect to OpenAI API.");
