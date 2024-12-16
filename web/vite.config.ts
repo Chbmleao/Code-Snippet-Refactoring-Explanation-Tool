@@ -10,4 +10,7 @@ export default defineConfig({
   server: {
     port: port,
   },
+  preview: {
+    port: port,
+  },
 });

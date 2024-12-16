@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "(cd web && npm run serve)",
+      "name": "WebServe",
+      "request": "launch",
+      "type": "node-terminal",
+      "preLaunchTask": "WebInstall"
+    },
+    {
+      "command": "(cd server && npm run serve)",
+      "name": "NodeServe",
+      "request": "launch",
+      "type": "node-terminal",
+      "preLaunchTask": "NodeInstall"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "ProdEnvironment",
+      "configurations": ["WebServe", "NodeServe"]
+    }
+  ]
+}
