@@ -9,8 +9,17 @@ export const callCodeRefactorAPI = async (code: string) => {
       code,
     });
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Failed to call API', error);
-    return { error: 'API call failed' };
+
+    if (axios.isAxiosError(error)) {
+      throw {
+        message: error.response?.data?.message || 'API call failed',
+        status: error.response?.status || 500,
+        details: error.response?.data || null,
+      };
+    } else {
+      throw { message: 'Unknown error occurred', details: error };
+    }
   }
 };

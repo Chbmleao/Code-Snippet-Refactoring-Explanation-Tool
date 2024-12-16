@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import Header from './components/Layouts/Header';
 import CodeInputForm from './components/Forms/CodeInputForm';
 import LoadingBox from './components/Layouts/LoadingBox';
+import ErrorBox from './components/Layouts/ErrorBox';
 import CodeRefactorResult from './components/Results/CodeRefactorResult';
 import { callCodeRefactorAPI } from './services/apiService';
 
@@ -13,7 +14,9 @@ const App: React.FC = () => {
     reasoning: [],
   };
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [inputCode, setInputCode] = useState<string>('');
   const [refactoredData, setRefactoredData] = useState<{
     code: string;
     explanation: string;
@@ -30,7 +33,9 @@ const App: React.FC = () => {
   };
 
   const handleCodeSubmit = (code: string) => {
+    setInputCode(code);
     setRefactoredData(defaultRefactoredData);
+    setError(null);
 
     setIsLoading(true);
     setTimeout(() => scrollToRef(loadingSectionRef), 0);
@@ -44,11 +49,20 @@ const App: React.FC = () => {
           reasoning,
         });
       })
-      .catch(error => console.error('API call failed', error))
+      .catch(err => {
+        console.error('API call failed', err);
+        setError('Failed to refactor the code snippet.');
+        setRefactoredData(defaultRefactoredData);
+        setTimeout(() => scrollToRef(codeRefactorResultRef), 0);
+      })
       .finally(() => {
         setIsLoading(false);
         setTimeout(() => scrollToRef(codeRefactorResultRef), 0);
       });
+  };
+
+  const onRetryClick = () => {
+    handleCodeSubmit(inputCode);
   };
 
   return (
@@ -65,6 +79,15 @@ const App: React.FC = () => {
           className="px-36 bg-white min-h-screen flex items-center justify-center"
         >
           <LoadingBox message="Refactoring your code snippet..." />
+        </div>
+      )}
+
+      {error && (
+        <div
+          ref={codeRefactorResultRef}
+          className="px-36 bg-white min-h-screen flex items-center justify-center"
+        >
+          <ErrorBox title={error} onRetryClick={onRetryClick} />
         </div>
       )}
 
