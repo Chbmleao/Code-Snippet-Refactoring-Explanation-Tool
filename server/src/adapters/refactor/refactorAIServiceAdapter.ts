@@ -27,10 +27,10 @@ const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
  */
 export const refactorAiServiceAdapter = async (code: string) => {
   try {
-    const prompt = `Analyze and refactor the following code snippet. Your response should follow this exact JSON format with concise and precise information:
+    const prompt = `Analyze and refactor the following code snippet. Your response should follow this exact JSON format with the refactored code and complete explanation:
 
       {
-        "explanation": "A clear natural-language explanation of what the code does.", 
+        "explanation": "A clear natural-language explanation of what the code does. Maximum 5 paragraphs.", 
         "code": "A refactored version of the code.",
         "reasoning": [
           "Step-by-step reasoning to justify the changes and refactor. Without numbering.",
