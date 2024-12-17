@@ -7,6 +7,16 @@ interface TitleBoxProps {
   darkMode?: boolean;
 }
 
+/**
+ * TitleBox component displays a title and a description with optional dark mode styling.
+ *
+ * @param {object} props - The properties object.
+ * @param {string} props.title - The title text to display.
+ * @param {string} props.description - The description text to display.
+ * @param {boolean} [props.darkMode=false] - Optional flag to enable dark mode styling.
+ *
+ * @returns {JSX.Element} The rendered TitleBox component.
+ */
 const TitleBox: React.FC<TitleBoxProps> = ({
   title,
   description,

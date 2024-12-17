@@ -6,6 +6,18 @@ interface LoadingBoxProps {
   message: string;
 }
 
+/**
+ * TitleBox component displays a message and alternates between two cat images every second.
+ *
+ * @component
+ * @param {LoadingBoxProps} props - The properties for the TitleBox component.
+ * @param {string} props.message - The message to be displayed in the TitleBox.
+ *
+ * @example
+ * <TitleBox message="Loading..." />
+ *
+ * @returns {JSX.Element} The rendered TitleBox component.
+ */
 const TitleBox: React.FC<LoadingBoxProps> = ({ message }) => {
   const [catImage, setCatImage] = useState<string>(image1);
 

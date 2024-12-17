@@ -1,5 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
+/**
+ * Header component that displays a fixed navigation bar at the top of the page.
+ * The navigation bar hides when the user scrolls down and shows when the user scrolls up.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Header />
+ * )
+ *
+ * @returns {JSX.Element} The rendered Header component.
+ *
+ * @remarks
+ * The component uses `useState` to manage the visibility of the navigation bar and the last scroll position.
+ * It also uses `useEffect` to add and remove the scroll event listener.
+ *
+ * @function
+ * @name Header
+ *
+ * @description
+ * The `Header` component contains a logo that, when clicked, scrolls the page smoothly to the top.
+ * The visibility of the navigation bar is controlled by the `isVisible` state, which is updated based on the scroll direction.
+ */
 const Header: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);

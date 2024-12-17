@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
-import Button from '../UI/Button';
-import CodeArea from '../UI/CodeArea';
-import TitleBox from '../Layouts/TitleBox';
+import { Button, CodeArea, TitleBox } from '../index';
 
 interface CodeInputFormProps {
   onSubmit: (code: string) => void;
 }
 
+/**
+ * `CodeInputForm` is a React functional component that renders a form for code input.
+ * It allows users to enter a code snippet, which will be submitted for refactoring and explanation.
+ *
+ * @component
+ * @param {CodeInputFormProps} props - The properties passed to the component.
+ * @param {function} props.onSubmit - The function to call when the form is submitted with valid code.
+ *
+ * @returns {JSX.Element} The rendered form component.
+ *
+ * @example
+ * <CodeInputForm onSubmit={handleCodeSubmit} />
+ */
 const CodeInputForm: React.FC<CodeInputFormProps> = ({ onSubmit }) => {
   const [code, setCode] = useState<string>('');
 

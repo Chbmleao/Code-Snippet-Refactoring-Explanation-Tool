@@ -9,6 +9,22 @@ const openai = new OpenAI({
 });
 const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
+/**
+ * Refactors the given code snippet using OpenAI's API.
+ *
+ * @param {string} code - The code snippet to be analyzed and refactored.
+ * @returns {Promise<any>} - A promise that resolves with the refactored code and explanation.
+ * @throws Will throw an error if the connection to the OpenAI API fails.
+ *
+ * The response from the API will follow this JSON format:
+ * {
+ *   "explanation": "A clear natural-language explanation of what the code does.",
+ *   "code": "A refactored version of the code.",
+ *   "reasoning": [
+ *     "Step-by-step reasoning to justify the changes and refactor. Without numbering."
+ *   ]
+ * }
+ */
 export const refactorAiServiceAdapter = async (code: string) => {
   try {
     const prompt = `Analyze and refactor the following code snippet. Your response should follow this exact JSON format with concise and precise information:

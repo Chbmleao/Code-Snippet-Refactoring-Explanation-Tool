@@ -7,6 +7,16 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
+/**
+ * Button component that renders a styled button element.
+ *
+ * @param {ButtonProps} props - The properties for the Button component.
+ * @param {string} props.text - The text to display inside the button.
+ * @param {boolean} [props.darkMode=true] - Determines if the button should be styled for dark mode.
+ * @param {() => void} [props.onClick=() => {}] - The function to call when the button is clicked.
+ *
+ * @returns {JSX.Element} The rendered button element.
+ */
 const Button: React.FC<ButtonProps> = ({
   text,
   darkMode = true,

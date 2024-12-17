@@ -1,12 +1,21 @@
 import React from 'react';
 import errorIcon from '../../assets/error-icon.png';
-import Button from '../UI/Button';
+import { Button } from '../';
 
 interface ErrorBoxProps {
   title: string;
   onRetryClick: () => void;
 }
 
+/**
+ * ErrorBox component displays an error message with a retry button.
+ *
+ * @component
+ * @param {ErrorBoxProps} props - The properties for the ErrorBox component.
+ * @param {string} props.title - The title of the error message.
+ * @param {() => void} props.onRetryClick - The callback function to be called when the retry button is clicked.
+ * @returns {JSX.Element} The rendered ErrorBox component.
+ */
 const ErrorBox: React.FC<ErrorBoxProps> = ({ title, onRetryClick }) => {
   return (
     <div className="w-full flex justify-center items-center flex-col ">

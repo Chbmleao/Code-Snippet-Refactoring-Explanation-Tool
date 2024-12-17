@@ -1,6 +1,5 @@
 import React from 'react';
-import TitleBox from '../Layouts/TitleBox';
-import CodeArea from '../UI/CodeArea';
+import { CodeArea, TitleBox } from '../';
 
 interface CodeRefactorResultProps {
   code: string;
@@ -8,6 +7,17 @@ interface CodeRefactorResultProps {
   reasoning: Array<string>;
 }
 
+/**
+ * Component to display the result of a code refactoring process.
+ *
+ * @component
+ * @param {CodeRefactorResultProps} props - The properties for the component.
+ * @param {string} props.code - The refactored code to display.
+ * @param {string} props.explanation - A natural-language explanation of what the code does.
+ * @param {string[]} props.reasoning - A step-by-step reasoning of how the explanation was derived.
+ *
+ * @returns {JSX.Element} The rendered component.
+ */
 const CodeRefactorResult: React.FC<CodeRefactorResultProps> = ({
   code,
   explanation,
