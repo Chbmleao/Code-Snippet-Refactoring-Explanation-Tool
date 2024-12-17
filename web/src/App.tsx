@@ -1,12 +1,55 @@
 import './App.css';
 import React, { useState, useRef } from 'react';
 import Header from './components/Layouts/Header';
-import CodeInputForm from './components/Forms/CodeInputForm';
-import LoadingBox from './components/Layouts/LoadingBox';
-import ErrorBox from './components/Layouts/ErrorBox';
-import CodeRefactorResult from './components/Results/CodeRefactorResult';
-import { callCodeRefactorAPI } from './services/apiService';
+import {
+  CodeInputForm,
+  LoadingBox,
+  ErrorBox,
+  CodeRefactorResult,
+} from './components';
 
+import { refactorCode } from './services/codeRefactorService';
+
+/**
+ * The main application component.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * <App />
+ *
+ * @remarks
+ * This component handles the main logic for code refactoring. It includes state management for loading, error handling, and displaying the refactored code.
+ *
+ * @typedef {Object} RefactoredData
+ * @property {string} code - The refactored code.
+ * @property {string} explanation - Explanation of the refactored code.
+ * @property {Array<string>} reasoning - Reasoning behind the refactoring.
+ *
+ * @typedef {Object} APIResponse
+ * @property {string} code - The refactored code.
+ * @property {string} explanation - Explanation of the refactored code.
+ * @property {Array<string>} reasoning - Reasoning behind the refactoring.
+ *
+ * @function scrollToRef
+ * @param {React.RefObject<HTMLDivElement>} ref - The reference to the HTML element to scroll to.
+ *
+ * @function handleCodeSubmit
+ * @param {string} code - The code snippet to be refactored.
+ *
+ * @function onRetryClick
+ * Handles the retry action when an error occurs.
+ *
+ * @state {boolean} isLoading - Indicates if the refactoring process is in progress.
+ * @state {string | null} error - Stores any error message that occurs during the refactoring process.
+ * @state {string} inputCode - The code snippet input by the user.
+ * @state {RefactoredData} refactoredData - The data resulting from the refactoring process.
+ *
+ * @ref {React.RefObject<HTMLDivElement>} loadingSectionRef - Reference to the loading section element.
+ * @ref {React.RefObject<HTMLDivElement>} codeRefactorResultRef - Reference to the code refactor result section element.
+ */
 const App: React.FC = () => {
   const defaultRefactoredData = {
     code: '',
@@ -40,7 +83,7 @@ const App: React.FC = () => {
     setIsLoading(true);
     setTimeout(() => scrollToRef(loadingSectionRef), 0);
 
-    callCodeRefactorAPI(code)
+    refactorCode(code)
       .then((response: any) => {
         const { code: refactoredCode, explanation, reasoning } = response;
         setRefactoredData({
