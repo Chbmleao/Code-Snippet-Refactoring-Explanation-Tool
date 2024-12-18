@@ -1,5 +1,5 @@
 import React from 'react';
-import errorIcon from '../../assets/error-icon.png';
+import errorIcon from '../../assets/icons/error-icon.png';
 import { Button } from '../';
 
 interface ErrorBoxProps {

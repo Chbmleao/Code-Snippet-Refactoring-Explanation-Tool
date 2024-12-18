@@ -13,6 +13,7 @@ import CodeRefactorResult from './Results/CodeRefactorResult';
 // UI
 import Button from './UI/Button';
 import CodeArea from './UI/CodeArea';
+import CodeSyntaxHighlighter from './UI/CodeSyntaxHighlighter';
 
 export {
   CodeInputForm,
@@ -23,4 +24,5 @@ export {
   CodeRefactorResult,
   Button,
   CodeArea,
+  CodeSyntaxHighlighter,
 };
