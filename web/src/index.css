@@ -10,3 +10,22 @@ html {
   margin: 0;
   padding: 0;
 }
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4a6b7c;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6b899a;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2a404d;
+}
