@@ -18,7 +18,7 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
     .json({ message: "An unexpected error occurred.", error: err });
 });
 
-const corsOptions = {
+export const corsOptions = {
   origin: process.env.WEB_URL,
   methods: ["GET", "POST"],
 };
