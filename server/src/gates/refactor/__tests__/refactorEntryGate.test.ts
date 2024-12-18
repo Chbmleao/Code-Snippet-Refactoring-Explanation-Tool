@@ -1,54 +1,57 @@
-// jest.mock("~/src/domains/refactor/refactorDomain");
+import { refactorEntryGate } from "../refactorEntryGate";
+import { refactorDomain } from "../../../domains/refactor/refactorDomain";
 
-// import { refactorEntryGate } from "../../../gates/refactor/refactorEntryGate";
-// import { refactorDomain } from "../../../domains/refactor/refactorDomain";
+jest.mock("../../../domains/refactor/refactorDomain", () => ({
+  refactorDomain: jest.fn(),
+}));
 
-// describe("refactorEntryGate", () => {
-//   const mockCode = "  const a = 1;  ";
-//   const trimmedCode = "const a = 1;";
-//   const validResponse = {
-//     explanation: "This refactors the code for better readability.",
-//     code: "const a = 1; // Refactored",
-//     reasoning: "Improves maintainability by adding comments.",
-//   };
+describe("refactorEntryGate", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-//   afterEach(() => {
-//     jest.clearAllMocks();
-//   });
+  it("should trim the provided code before passing it to refactorDomain", async () => {
+    const sampleCode = "   const sum = (a, b) => a + b;   ";
+    const trimmedCode = "const sum = (a, b) => a + b;";
 
-//   it("should trim the input code before passing it to refactorDomain", async () => {
-//     (refactorDomain as jest.Mock).mockResolvedValue(validResponse);
+    const mockResponse = {
+      explanation: "Sample explanation",
+      code: "Refactored code snippet",
+      reasoning: ["Reason 1", "Reason 2"],
+    };
 
-//     await refactorEntryGate(mockCode);
+    // Mock the response of refactorDomain
+    (refactorDomain as jest.Mock).mockResolvedValue(mockResponse);
 
-//     expect(refactorDomain).toHaveBeenCalledTimes(1);
-//     expect(refactorDomain).toHaveBeenCalledWith(trimmedCode);
-//   });
+    const result = await refactorEntryGate(sampleCode);
 
-//   it("should pass already trimmed code to refactorDomain without changes", async () => {
-//     (refactorDomain as jest.Mock).mockResolvedValue(validResponse);
+    // Ensure refactorDomain was called with trimmed code
+    expect(refactorDomain).toHaveBeenCalledWith(trimmedCode);
+    expect(result).toEqual(mockResponse);
+  });
 
-//     await refactorEntryGate(trimmedCode);
+  it("should correctly return the response from refactorDomain", async () => {
+    const sampleCode = "const multiply = (a, b) => a * b;";
+    const mockResponse = {
+      explanation: "Multiplication code refactored",
+      code: "Refactored multiplication snippet",
+      reasoning: ["Optimized loop", "Improved readability"],
+    };
 
-//     expect(refactorDomain).toHaveBeenCalledTimes(1);
-//     expect(refactorDomain).toHaveBeenCalledWith(trimmedCode);
-//   });
+    (refactorDomain as jest.Mock).mockResolvedValue(mockResponse);
 
-//   it("should return the response from refactorDomain", async () => {
-//     (refactorDomain as jest.Mock).mockResolvedValue(validResponse);
+    const result = await refactorEntryGate(sampleCode);
 
-//     const result = await refactorEntryGate(trimmedCode);
+    expect(result).toEqual(mockResponse);
+  });
 
-//     expect(result).toEqual(validResponse);
-//   });
+  it("should propagate errors if refactorDomain fails", async () => {
+    const sampleCode = "const divide = (a, b) => a / b;";
+    const errorMessage = "Domain processing error.";
 
-//   it("should propagate errors from refactorDomain", async () => {
-//     const error = new Error("Domain error");
-//     (refactorDomain as jest.Mock).mockRejectedValue(error);
+    // Mock refactorDomain to reject with an error
+    (refactorDomain as jest.Mock).mockRejectedValue(new Error(errorMessage));
 
-//     await expect(refactorEntryGate(trimmedCode)).rejects.toThrow(error);
-
-//     expect(refactorDomain).toHaveBeenCalledTimes(1);
-//     expect(refactorDomain).toHaveBeenCalledWith(trimmedCode);
-//   });
-// });
+    await expect(refactorEntryGate(sampleCode)).rejects.toThrow(errorMessage);
+  });
+});
