@@ -1,0 +1,11 @@
+@media (max-height: 780px) {
+  .code-syntax-highlighter {
+    max-height: 22rem;
+  }
+}
+
+@media (min-height: 780px) {
+  .code-syntax-highlighter {
+    max-height: 27rem;
+  }
+}

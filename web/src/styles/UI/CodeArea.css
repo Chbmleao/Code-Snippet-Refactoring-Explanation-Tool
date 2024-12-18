@@ -17,3 +17,7 @@
   border-color: gray;
   outline: none;
 }
+
+.text-area {
+  max-height: 24rem;
+}

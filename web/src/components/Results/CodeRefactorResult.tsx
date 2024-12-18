@@ -34,7 +34,7 @@ const CodeRefactorResult: React.FC<CodeRefactorResultProps> = ({
         <p className="paragraph">{explanation}</p>
       </div>
 
-      <div className="h-auto max-h-96 my-10">
+      <div className="h-auto my-10">
         <CodeArea initialCode={code} readOnly={true} onChange={() => {}} />
       </div>
 

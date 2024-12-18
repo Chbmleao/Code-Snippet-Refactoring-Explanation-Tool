@@ -1,3 +1,4 @@
+import '../../styles/UI/CodeSyntaxHighlighter.css';
 import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -121,7 +122,7 @@ const CodeSyntaxHighlighter: React.FC<CodeSyntaxHighlighterProps> = ({
         }}
         wrapLines
         showLineNumbers
-        className="rounded-md overflow-hidden max-h-80 mt-0 code-syntax-highlighter"
+        className="rounded-md overflow-hidden mt-0 code-syntax-highlighter"
       >
         {code}
       </SyntaxHighlighter>

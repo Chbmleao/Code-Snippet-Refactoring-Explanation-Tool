@@ -55,7 +55,7 @@ const CodeArea: React.FC<CodeAreaProps> = ({
     >
       {!readOnly && (isEditing || !code) ? (
         <TextareaAutosize
-          className={`w-full p-3 border rounded-md resize-none h-full overflow-hidden max-h-96 ${
+          className={`w-full p-3 border rounded-md resize-none overflow-hidden text-area ${
             darkMode ? 'dark' : 'light'
           }`}
           placeholder="Enter your code snippet here..."
