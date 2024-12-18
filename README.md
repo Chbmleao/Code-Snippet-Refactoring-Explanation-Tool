@@ -98,6 +98,35 @@ WEB_URL=http://localhost:3000
 
 ---
 
+## Technologies Used
+
+### Frontend
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://reactjs.org/" title="React"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://vite.dev/" title="Vite"><img src="https://github.com/get-icon/geticon/raw/master/icons/vite.svg" alt="Vite" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://tailwindcss.com/" title="TailwindCSS"><img src="https://github.com/get-icon/geticon/raw/master/icons/tailwindcss.svg" alt="TailwindCSS" width="75px" height="75px" right-margin="15px"></a>
+
+### Backend
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://nodejs.org/" title="NodeJS"><img src="https://github.com/get-icon/geticon/raw/master/icons/nodejs-icon.svg" alt="NodeJS" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://expressjs.com/" title="Express"><img src="https://github.com/get-icon/geticon/raw/master/icons/express.svg" alt="Express" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://expressjs.com/" title="Express"><img src="https://github.com/get-icon/geticon/raw/master/icons/jest.svg" alt="Express" width="75px" height="75px" right-margin="15px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+---
+
 ## Next steps
 
 ### 1. User persona
@@ -142,7 +171,23 @@ Create an interactive experience by developing a blackboard where the user could
 - It will be possible to ask questions, request explanations, suggestions or optimizations.
 - Collaborate with AI, proposing changes and get AI-generated updates and insights instantly.
 
-### 3. Extensive Front-End Testing
+### 3. Beautify OpenAI results
+
+This feature enhances the OpenAI response output by formatting the results in Markdown. It ensures that the content returned from the OpenAI API is not only easy to read but also automatically structured into React components styled with Tailwind CSS.
+
+- Change the OpenAI API prompt to ask the response in `MarkDown` format
+- Use the text is `MarkDown` format to structure the `React` components with `Tailwind CSS style`
+
+#### How it works
+
+- The backend calls the OpenAI API with a prompt asking for responses in Markdown format.
+- OpenAI returns the response formatted in Markdown.
+- The system:
+  - Parses the Markdown response.
+  - Automatically transforms it into structure React components.
+  - Applies Tailwind CSS classes to maintain the desired visual appearence.
+
+### 4. Extensive Front-End Testing
 
 Implement a robust strategy to ensure the reliability and stability of the front-end codebase by covering unit tests, integration tests, and inline component tests.
 
