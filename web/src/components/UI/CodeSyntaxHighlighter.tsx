@@ -1,4 +1,3 @@
-import '../../styles/UI/CodeSyntaxHighlighter.css';
 import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -56,7 +55,7 @@ const CodeSyntaxHighlighter: React.FC<CodeSyntaxHighlighterProps> = ({
         </select>
 
         {copied ? (
-          <button className="py-1 inline-flex items-center gap-1">
+          <button type="button" className="py-1 inline-flex items-center gap-1">
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
@@ -83,7 +82,7 @@ const CodeSyntaxHighlighter: React.FC<CodeSyntaxHighlighterProps> = ({
             Copied!
           </button>
         ) : (
-          <button className="py-1 inline-flex items-center gap-1">
+          <button type="button" className="py-1 inline-flex items-center gap-1">
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
