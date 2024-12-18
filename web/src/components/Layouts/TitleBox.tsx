@@ -1,4 +1,4 @@
-import '../../styles/UI/Button.css';
+import '../../styles/Layouts/TitleBox.css';
 import React from 'react';
 
 interface TitleBoxProps {
@@ -25,9 +25,11 @@ const TitleBox: React.FC<TitleBoxProps> = ({
   const classStyle = `font-bold text-left py-10 ${darkMode ? 'text-white' : 'text-gray-900'}`;
 
   return (
-    <div className="w-full flex justify-between">
-      <h1 className={`${classStyle} text-4xl w-1/3`}>{title}</h1>
-      <h2 className={`${classStyle} text-m w-1/4`}>{description}</h2>
+    <div className="title-box w-full flex justify-between">
+      <h1 className={`${classStyle} title text-4xl w-1/3`}>{title}</h1>
+      <h2 className={`${classStyle} description text-base w-1/4`}>
+        {description}
+      </h2>
     </div>
   );
 };

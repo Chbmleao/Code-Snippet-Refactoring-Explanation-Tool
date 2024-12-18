@@ -109,17 +109,17 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <Header />
 
-      <div className="px-36 bg-gray-950 min-h-screen flex items-center justify-center">
+      <div className="responsive-padding px-36 bg-gray-950 min-h-screen flex items-center justify-center">
         <CodeInputForm onSubmit={handleCodeSubmit} />
       </div>
 
       {isLoading && (
         <div
           ref={loadingSectionRef}
-          className="px-36 bg-white min-h-screen flex items-center justify-center"
+          className="responsive-padding px-36 bg-white min-h-screen flex items-center justify-center"
         >
           <LoadingBox message="Refactoring your code snippet..." />
         </div>
@@ -128,7 +128,7 @@ const App: React.FC = () => {
       {error && (
         <div
           ref={codeRefactorResultRef}
-          className="px-36 bg-white min-h-screen flex items-center justify-center"
+          className="responsive-padding px-36 bg-white min-h-screen flex items-center justify-center"
         >
           <ErrorBox title={error} onRetryClick={onRetryClick} />
         </div>
@@ -137,7 +137,7 @@ const App: React.FC = () => {
       {refactoredData.code && (
         <div
           ref={codeRefactorResultRef}
-          className="px-36 bg-white min-h-screen flex items-center justify-center"
+          className="responsive-padding px-36 bg-white min-h-screen flex items-center justify-center"
         >
           <CodeRefactorResult
             code={refactoredData.code}

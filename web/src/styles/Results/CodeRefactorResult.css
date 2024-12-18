@@ -1,0 +1,11 @@
+@media (max-width: 640px) {
+  .paragraph {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    padding: 0.5rem 0;
+  }
+
+  .code-refactor-result {
+    padding: 5rem 0;
+  }
+}

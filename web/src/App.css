@@ -4,3 +4,10 @@
   padding: 0;
   text-align: center;
 }
+
+@media (max-width: 640px) {
+  .responsive-padding {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}

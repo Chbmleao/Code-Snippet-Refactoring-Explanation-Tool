@@ -1,0 +1,22 @@
+@media (max-width: 640px) {
+  .title-box {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  .title {
+    font-size: 1.5rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+    width: 100%;
+    padding: 0;
+  }
+
+  .description {
+    font-size: 0.75rem; /* 12px */
+    line-height: 1rem; /* 16px */
+    width: 100%;
+    padding: 1rem 0;
+  }
+}

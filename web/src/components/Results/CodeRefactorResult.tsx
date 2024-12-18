@@ -1,3 +1,4 @@
+import '../../styles/Results/CodeRefactorResult.css';
 import React from 'react';
 import { CodeArea, TitleBox } from '../';
 
@@ -24,13 +25,13 @@ const CodeRefactorResult: React.FC<CodeRefactorResultProps> = ({
   reasoning,
 }) => {
   return (
-    <div className="w-full py-24 border-gray-300 rounded-md resize-none">
+    <div className="w-full py-24 border-gray-300 rounded-md resize-none code-refactor-result">
       <div className="mb-4 text-left">
         <TitleBox
           title="Code explanation"
           description="A natural-language explanation of what the code does."
         />
-        <p>{explanation}</p>
+        <p className="paragraph">{explanation}</p>
       </div>
 
       <div className="h-auto max-h-96 my-10">
@@ -44,7 +45,7 @@ const CodeRefactorResult: React.FC<CodeRefactorResultProps> = ({
         />
         <ul>
           {reasoning.map((reason, index) => (
-            <li key={index}>
+            <li key={index} className="paragraph py-1">
               <strong>{index + 1}.</strong> {reason}
             </li>
           ))}
