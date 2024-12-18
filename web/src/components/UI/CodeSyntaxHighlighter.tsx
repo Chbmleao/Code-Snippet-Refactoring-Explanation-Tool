@@ -8,6 +8,27 @@ interface CodeSyntaxHighlighterProps {
   darkMode?: boolean;
 }
 
+/**
+ * `CodeSyntaxHighlighter` is a React functional component that renders a code block with syntax highlighting
+ * and a copy-to-clipboard feature. It allows users to select the programming language for syntax highlighting.
+ *
+ * @component
+ * @param {CodeSyntaxHighlighterProps} props - The props for the component.
+ * @param {string} props.code - The code to be highlighted and displayed.
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * ```tsx
+ * <CodeSyntaxHighlighter code={`const x = 10;`} />
+ * ```
+ *
+ * @remarks
+ * The component uses the `react-syntax-highlighter` library for syntax highlighting and the `navigator.clipboard` API for copying code to the clipboard.
+ *
+ * @function
+ * @name CodeSyntaxHighlighter
+ */
 const CodeSyntaxHighlighter: React.FC<CodeSyntaxHighlighterProps> = ({
   code,
 }) => {

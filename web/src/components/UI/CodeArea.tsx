@@ -10,6 +10,25 @@ interface CodeAreaProps {
   darkMode?: boolean;
 }
 
+/**
+ * `CodeArea` is a React functional component that provides an editable code area with syntax highlighting.
+ *
+ * @param {CodeAreaProps} props - The properties for the `CodeArea` component.
+ * @param {string} [props.initialCode=''] - The initial code to display in the code area.
+ * @param {boolean} [props.readOnly=false] - If true, the code area will be read-only.
+ * @param {boolean} [props.darkMode=false] - If true, the code area will be displayed in dark mode.
+ * @param {function} props.onChange - Callback function to handle changes in the code area.
+ *
+ * @returns {JSX.Element} The rendered `CodeArea` component.
+ *
+ * @example
+ * <CodeArea
+ *   initialCode="console.log('Hello, world!');"
+ *   readOnly={false}
+ *   darkMode={true}
+ *   onChange={(newCode) => console.log(newCode)}
+ * />
+ */
 const CodeArea: React.FC<CodeAreaProps> = ({
   initialCode = '',
   readOnly = false,
