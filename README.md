@@ -48,7 +48,7 @@ npm install
 
 ```bash
 cd web
-npm run dev
+npm run serve
 ```
 
 By default, the frontend will be available at `http://localhost:3000`.
