@@ -6,6 +6,7 @@ import {
   LoadingBox,
   ErrorBox,
   CodeRefactorResult,
+  Footer,
 } from './components';
 
 import { refactorCode } from './services/codeRefactorService';
@@ -146,6 +147,8 @@ const App: React.FC = () => {
           />
         </div>
       )}
+
+      <Footer />
     </div>
   );
 };
